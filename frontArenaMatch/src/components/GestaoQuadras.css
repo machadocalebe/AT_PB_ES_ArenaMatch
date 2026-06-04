@@ -1,0 +1,110 @@
+.gestao-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.titulo-tela {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.form-quadra {
+  background: var(--bg-sidebar);
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  gap: 20px;
+  align-items: flex-end;
+}
+
+.input-group label {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  font-weight: 600;
+  display: block;
+}
+
+.input-group input, .input-group select {
+  padding: 12px 16px;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  font-size: 15px;
+  width: 100%;
+  background: white;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.input-group input:focus { border-color: var(--primary); }
+
+.btn-salvar {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 0 24px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-weight: 600;
+  height: 45px;
+  transition: background 0.3s;
+}
+
+.btn-salvar:hover { background: var(--primary-dark); }
+
+.quadras-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.quadra-card {
+  background: white;
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-light);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.quadra-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.quadra-manutencao {
+  background: #fffafa;
+  border-color: #ffe4e6;
+}
+
+.tag-status {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.tag-ativa { background: #dcfce7; color: var(--primary-dark); }
+.tag-inativa { background: #fee2e2; color: #ef4444; }
+
+.acoes-card {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.btn-acao {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13px;
+  transition: opacity 0.2s;
+}
+
+.btn-acao:hover { opacity: 0.8; }
+.btn-toggle { background: var(--bg-sidebar); color: var(--primary-dark); }
+.btn-excluir { background: #fff1f2; color: #ef4444; }

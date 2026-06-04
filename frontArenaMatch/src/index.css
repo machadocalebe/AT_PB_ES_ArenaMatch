@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Paleta Premium - Tons de Verde Menta e Cinza */
+  --primary: #4ade80;
+  --primary-dark: #16a34a;
+  --bg-app: #e5f5eb; /* Fundo principal da tela inteira */
+  --bg-sidebar: #f0fdf4; /* Verde super claro para a barra lateral */
+  --bg-panel: #ffffff;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --border-light: #f1f5f9;
+  
+  /* Sombras Suaves (Soft-UI) */
+  --shadow-sm: 0 2px 4px rgb(0 0 0 / 0.02);
+  --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 0.05);
+  
+  /* Bordas Arredondadas */
+  --radius-md: 12px;
+  --radius-lg: 24px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background: var(--bg-app);
+  color: var(--text-main);
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden; /* Evita barra de rolagem dupla */
+}
