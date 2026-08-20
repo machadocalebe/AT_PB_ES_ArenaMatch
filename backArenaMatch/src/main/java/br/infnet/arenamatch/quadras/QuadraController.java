@@ -1,5 +1,7 @@
 package br.infnet.arenamatch.quadras;
 
+import br.infnet.arenamatch.integracao.AvaliacaoClient;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -42,5 +44,24 @@ public class QuadraController {
     @PatchMapping("/{id}/manutencao")
     public ResponseEntity<Quadra> alternarManutencao(@PathVariable Long id) {
         return ResponseEntity.ok(quadraService.alternarManutencao(id));
+    }
+
+    // Adicione a injeção do cliente Feign no topo do Controller:
+    @Autowired
+    private AvaliacaoClient avaliacaoClient;
+
+    // --- Endpoints de Integração com o Microsserviço ---
+
+    @GetMapping("/{id}/avaliacoes")
+    public ResponseEntity<?> listarAvaliacoes(@PathVariable Long id) {
+        // O ArenaMatch pede a lista de notas para o microsserviço
+        return ResponseEntity.ok(avaliacaoClient.buscarNotasDaQuadra(id));
+    }
+
+    @PostMapping("/{id}/avaliacoes")
+    public ResponseEntity<?> avaliarQuadra(@PathVariable Long id, @RequestBody br.infnet.arenamatch.integracao.AvaliacaoDTO dto) {
+        dto.setQuadraId(id);
+        // O ArenaMatch recebe a nota do React e repassa para o microsserviço
+        return ResponseEntity.ok(avaliacaoClient.salvarAvaliacao(dto));
     }
 }

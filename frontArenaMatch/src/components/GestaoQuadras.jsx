@@ -6,12 +6,42 @@ export default function GestaoQuadras() {
   const [quadras, setQuadras] = useState([]);
   const [nome, setNome] = useState('');
   const [precoHora, setPrecoHora] = useState('');
+  const [notasTemp, setNotasTemp] = useState({}); // Guarda a nota digitada temporariamente
+  const [avaliacoesQuadra, setAvaliacoesQuadra] = useState({}); // Guarda a média das quadras
 
-  const carregarQuadras = () => {
-    api.get('/quadras').then(res => setQuadras(res.data)).catch(console.error);
+  const carregarQuadras = async () => {
+    try {
+      const res = await api.get('/quadras');
+      setQuadras(res.data);
+      // Para cada quadra, busca as avaliações no microsserviço via backend principal
+      res.data.forEach(q => carregarAvaliacoes(q.id));
+    } catch (error) {
+      console.error(error);
+    }
   };
 
-  useEffect(() => carregarQuadras(), []);
+  const carregarAvaliacoes = async (quadraId) => {
+    try {
+      const res = await api.get(`/quadras/${quadraId}/avaliacoes`);
+      const avaliacoes = res.data;
+      
+      if (avaliacoes.length > 0) {
+        const media = avaliacoes.reduce((acc, curr) => acc + curr.nota, 0) / avaliacoes.length;
+        setAvaliacoesQuadra(prev => ({ ...prev, [quadraId]: media.toFixed(1) }));
+      } else {
+        setAvaliacoesQuadra(prev => ({ ...prev, [quadraId]: 'Sem notas' }));
+      }
+    } catch (error) {
+      console.error(`Erro ao buscar notas da quadra ${quadraId}`, error);
+    }
+  };
+
+  useEffect(() => {
+    const inicializar = async () => {
+      await carregarQuadras();
+    };
+    inicializar();
+  }, []);
 
   const handleCriarQuadra = async (e) => {
     e.preventDefault();
@@ -37,8 +67,25 @@ export default function GestaoQuadras() {
         await api.delete(`/quadras/${id}`);
         carregarQuadras();
       } catch (error) {
-        alert(error.response?.data?.message || "Erro ao excluir quadra. Ela possui reservas atreladas?");
+        alert(error.response?.data?.message || "Erro ao excluir quadra.");
       }
+    }
+  };
+
+  const handleEnviarAvaliacao = async (quadraId) => {
+    const nota = notasTemp[quadraId];
+    if (!nota || nota < 1 || nota > 5) {
+      alert("Por favor, digite uma nota entre 1 e 5.");
+      return;
+    }
+    
+    try {
+      await api.post(`/quadras/${quadraId}/avaliacoes`, { nota: parseInt(nota) });
+      setNotasTemp(prev => ({ ...prev, [quadraId]: '' })); // Limpa o campo
+      carregarAvaliacoes(quadraId); // Recarrega a média
+      alert("Avaliação registrada com sucesso!");
+    } catch (error) {
+      alert("Erro ao enviar avaliação.");
     }
   };
 
@@ -65,6 +112,23 @@ export default function GestaoQuadras() {
             </div>
             <p className="preco">R$ {q.precoHora.toFixed(2)} / hora</p>
             
+            {/* NOVO: Seção do Microsserviço de Avaliações */}
+            <div className="avaliacao-section">
+              <span className="media-nota">⭐ {avaliacoesQuadra[q.id] || 'Carregando...'}</span>
+              <div className="avaliar-controls">
+                <input 
+                  type="number" 
+                  min="1" 
+                  max="5" 
+                  placeholder="1 a 5"
+                  value={notasTemp[q.id] || ''}
+                  onChange={e => setNotasTemp(prev => ({ ...prev, [q.id]: e.target.value }))}
+                />
+                <button onClick={() => handleEnviarAvaliacao(q.id)}>Avaliar</button>
+              </div>
+            </div>
+            {/* FIM DA SEÇÃO */}
+
             <div className="acoes-card">
               <button className="btn-acao btn-toggle" onClick={() => handleManutencao(q.id)}>
                 {q.emManutencao ? "Liberar" : "Bloquear"}
