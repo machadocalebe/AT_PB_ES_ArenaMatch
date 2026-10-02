@@ -8,4 +8,6 @@ import java.time.LocalDateTime;
 public interface ReservaRepository extends JpaRepository<Reserva, Long> {
 
     boolean existsByQuadraIdAndDataHoraInicio(Long quadraId, LocalDateTime dataHoraInicio);
+
+    void deleteByQuadraId(Long quadraId);
 }

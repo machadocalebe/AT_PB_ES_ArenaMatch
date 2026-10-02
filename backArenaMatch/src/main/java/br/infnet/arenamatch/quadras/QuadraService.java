@@ -5,14 +5,19 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import br.infnet.arenamatch.config.RabbitMQConfig;
+import br.infnet.arenamatch.eventos.QuadraEmManutencaoEvent;
 
 @Service
 public class QuadraService {
 
     private final QuadraRepository quadraRepository;
+    private final RabbitTemplate rabbitTemplate;
 
-    public QuadraService(QuadraRepository quadraRepository) {
+    public QuadraService(QuadraRepository quadraRepository, RabbitTemplate rabbitTemplate) {
         this.quadraRepository = quadraRepository;
+        this.rabbitTemplate = rabbitTemplate;
     }
 
     public Quadra criar(QuadraRequestDTO dto) {
@@ -55,6 +60,14 @@ public class QuadraService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Quadra não encontrada!"));
 
         quadra.setEmManutencao(!quadra.isEmManutencao());
-        return quadraRepository.save(quadra);
+        Quadra quadraSalva = quadraRepository.save(quadra);
+
+        // Se entrou em manutenção, dispara o evento para cancelar reservas atreladas
+        if (quadraSalva.isEmManutencao()) {
+            QuadraEmManutencaoEvent event = new QuadraEmManutencaoEvent(quadraSalva.getId(), quadraSalva.getNome());
+            rabbitTemplate.convertAndSend(RabbitMQConfig.EXCHANGE_NAME, RabbitMQConfig.ROUTING_KEY_QUADRA, event);
+        }
+
+        return quadraSalva;
     }
 }

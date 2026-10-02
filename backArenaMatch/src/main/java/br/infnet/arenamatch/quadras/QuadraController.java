@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import br.infnet.arenamatch.config.RabbitMQConfig;
 
 import java.util.List;
 
@@ -49,6 +51,9 @@ public class QuadraController {
     // Adicione a injeção do cliente Feign no topo do Controller:
     @Autowired
     private AvaliacaoClient avaliacaoClient;
+    
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
 
     // --- Endpoints de Integração com o Microsserviço ---
 
@@ -61,7 +66,10 @@ public class QuadraController {
     @PostMapping("/{id}/avaliacoes")
     public ResponseEntity<?> avaliarQuadra(@PathVariable Long id, @RequestBody br.infnet.arenamatch.integracao.AvaliacaoDTO dto) {
         dto.setQuadraId(id);
-        // O ArenaMatch recebe a nota do React e repassa para o microsserviço
-        return ResponseEntity.ok(avaliacaoClient.salvarAvaliacao(dto));
+        // Em vez de HTTP Síncrono, enviamos uma mensagem assíncrona para o RabbitMQ
+        rabbitTemplate.convertAndSend(RabbitMQConfig.EXCHANGE_NAME, RabbitMQConfig.ROUTING_KEY_AVALIACAO, dto);
+        
+        // Retornamos 202 Accepted indicando que o processamento foi aceito pela fila
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body("Avaliação enviada para processamento com sucesso!");
     }
 }

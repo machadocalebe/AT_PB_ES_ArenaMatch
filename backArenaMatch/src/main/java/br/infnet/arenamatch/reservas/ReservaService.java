@@ -7,17 +7,22 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import br.infnet.arenamatch.config.RabbitMQConfig;
+import br.infnet.arenamatch.eventos.ReservaCriadaEvent;
 
 @Service
 public class ReservaService {
 
     private final ReservaRepository reservaRepository;
     private final QuadraRepository quadraRepository;
+    private final RabbitTemplate rabbitTemplate;
 
     // Injeção de dependência via construtor (Best Practice)
-    public ReservaService(ReservaRepository reservaRepository, QuadraRepository quadraRepository) {
+    public ReservaService(ReservaRepository reservaRepository, QuadraRepository quadraRepository, RabbitTemplate rabbitTemplate) {
         this.reservaRepository = reservaRepository;
         this.quadraRepository = quadraRepository;
+        this.rabbitTemplate = rabbitTemplate;
     }
 
     public Reserva criarReserva(ReservaRequestDTO dto) {
@@ -42,7 +47,18 @@ public class ReservaService {
         novaReserva.setDataHoraInicio(dto.getDataHoraInicio());
         novaReserva.setQuadra(quadra);
 
-        return reservaRepository.save(novaReserva);
+        Reserva reservaSalva = reservaRepository.save(novaReserva);
+
+        // Dispara o evento de Reserva Criada
+        ReservaCriadaEvent event = new ReservaCriadaEvent(
+                reservaSalva.getId(),
+                reservaSalva.getNomeLocatario(),
+                quadra.getId(),
+                reservaSalva.getDataHoraInicio()
+        );
+        rabbitTemplate.convertAndSend(RabbitMQConfig.EXCHANGE_NAME, RabbitMQConfig.ROUTING_KEY_RESERVA, event);
+
+        return reservaSalva;
     }
 
     public void deletar(Long id) {
