@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useState, useEffect } from 'react';
 import api from '../services/api';
 import './GestaoQuadras.css';

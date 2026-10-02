@@ -1,8 +1,0 @@
-2026-10-02T16:37:57.2170000Z Requested labels: ubuntu-latest
-2026-10-02T16:37:57.2170000Z Job defined at: machadocalebe/Tp5_PB_ES_ArenaMatch/.github/workflows/ci-cd.yml@refs/heads/main
-2026-10-02T16:37:57.2170000Z Waiting for a runner to pick up this job...
-2026-10-02T16:37:57.2100000Z Evaluating build-frontend.if
-2026-10-02T16:37:57.2100000Z Evaluating: success()
-2026-10-02T16:37:57.2100000Z Result: true
-2026-10-02T16:37:57.9760000Z Job is about to start running on the hosted runner: GitHub Actions 1000000057
-2026-10-02T16:37:57.9760000Z Job is waiting for a hosted runner to come online.
