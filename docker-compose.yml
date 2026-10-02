@@ -1,0 +1,63 @@
+version: "3.9"
+
+services:
+  # ── RabbitMQ Message Broker ────────────────────────────────────────────────
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: arenamatch-rabbitmq
+    ports:
+      - "5672:5672"    # AMQP (conexão do Spring Boot)
+      - "15672:15672"  # Painel Web de Gerenciamento
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "check_port_connectivity"]
+      interval: 15s
+      timeout: 10s
+      retries: 5
+    networks:
+      - arenamatch-net
+
+  # ── Backend Spring Boot API ────────────────────────────────────────────────
+  backend:
+    build:
+      context: ./backArenaMatch
+      dockerfile: Dockerfile
+    container_name: arenamatch-backend
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_RABBITMQ_HOST: rabbitmq
+      SPRING_RABBITMQ_PORT: 5672
+      SPRING_RABBITMQ_USERNAME: guest
+      SPRING_RABBITMQ_PASSWORD: guest
+      SPRING_APPLICATION_NAME: arenamatch
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:8080/actuator/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    networks:
+      - arenamatch-net
+
+  # ── Frontend React + Nginx ─────────────────────────────────────────────────
+  frontend:
+    build:
+      context: ./frontArenaMatch
+      dockerfile: Dockerfile
+    container_name: arenamatch-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - arenamatch-net
+
+networks:
+  arenamatch-net:
+    driver: bridge
