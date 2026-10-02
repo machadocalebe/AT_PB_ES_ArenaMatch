@@ -42,6 +42,7 @@ export default function Agenda() {
     }
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { carregarDados(); }, []);
 
   const handleCriarReserva = async (e) => {
@@ -62,6 +63,7 @@ export default function Agenda() {
         await api.delete(`/reservas/${evento.id}`);
         carregarDados();
       } catch (error) {
+        console.error(error);
         alert("Erro ao excluir reserva.");
       }
     }

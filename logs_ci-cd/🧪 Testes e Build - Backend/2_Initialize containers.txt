@@ -1,0 +1,87 @@
+﻿2026-10-02T16:38:02.0241134Z ##[group]Checking docker version
+2026-10-02T16:38:02.0254781Z ##[command]/usr/bin/docker version --format '{{.Server.APIVersion}}'
+2026-10-02T16:38:02.1345354Z '1.48'
+2026-10-02T16:38:02.1358968Z Docker daemon API version: '1.48'
+2026-10-02T16:38:02.1359913Z ##[command]/usr/bin/docker version --format '{{.Client.APIVersion}}'
+2026-10-02T16:38:02.1540276Z '1.48'
+2026-10-02T16:38:02.1559268Z Docker client API version: '1.48'
+2026-10-02T16:38:02.1565577Z ##[endgroup]
+2026-10-02T16:38:02.1569219Z ##[group]Clean up resources from previous jobs
+2026-10-02T16:38:02.1575095Z ##[command]/usr/bin/docker ps --all --quiet --no-trunc --filter "label=c283e0"
+2026-10-02T16:38:02.1736185Z ##[command]/usr/bin/docker network prune --force --filter "label=c283e0"
+2026-10-02T16:38:02.1889526Z ##[endgroup]
+2026-10-02T16:38:02.1890215Z ##[group]Create local container network
+2026-10-02T16:38:02.1901474Z ##[command]/usr/bin/docker network create --label c283e0 github_network_c8d4e52c63764bdea9180543d787db9c
+2026-10-02T16:38:02.2538435Z a3db81dbb685ecc9c5e5f4d5ea7f963c1b81156e989a772344e9c7fe8fed9651
+2026-10-02T16:38:02.2558486Z ##[endgroup]
+2026-10-02T16:38:02.2584832Z ##[group]Starting rabbitmq service container
+2026-10-02T16:38:02.2607268Z ##[command]/usr/bin/docker pull rabbitmq:3
+2026-10-02T16:38:02.6792218Z 3: Pulling from library/rabbitmq
+2026-10-02T16:38:02.8293293Z 20043066d3d5: Pulling fs layer
+2026-10-02T16:38:02.8294556Z 3fadc669ef11: Pulling fs layer
+2026-10-02T16:38:02.8295614Z 7084ac8f4ab6: Pulling fs layer
+2026-10-02T16:38:02.8296816Z beb0d870d438: Pulling fs layer
+2026-10-02T16:38:02.8297861Z d63c4408fdb7: Pulling fs layer
+2026-10-02T16:38:02.8298886Z efa05c660812: Pulling fs layer
+2026-10-02T16:38:02.8299886Z f4e7f62f4b80: Pulling fs layer
+2026-10-02T16:38:02.8300843Z 5e1c03b67a78: Pulling fs layer
+2026-10-02T16:38:02.8301884Z 14e6209d5fa8: Pulling fs layer
+2026-10-02T16:38:02.8303407Z d63c4408fdb7: Waiting
+2026-10-02T16:38:02.8304248Z efa05c660812: Waiting
+2026-10-02T16:38:02.8305536Z f4e7f62f4b80: Waiting
+2026-10-02T16:38:02.8306177Z 5e1c03b67a78: Waiting
+2026-10-02T16:38:02.8307399Z 14e6209d5fa8: Waiting
+2026-10-02T16:38:02.8307964Z beb0d870d438: Waiting
+2026-10-02T16:38:03.1420116Z 7084ac8f4ab6: Verifying Checksum
+2026-10-02T16:38:03.1421491Z 7084ac8f4ab6: Download complete
+2026-10-02T16:38:03.2087905Z 20043066d3d5: Verifying Checksum
+2026-10-02T16:38:03.2089300Z 20043066d3d5: Download complete
+2026-10-02T16:38:03.2821252Z beb0d870d438: Verifying Checksum
+2026-10-02T16:38:03.2822918Z beb0d870d438: Download complete
+2026-10-02T16:38:03.3273590Z 3fadc669ef11: Verifying Checksum
+2026-10-02T16:38:03.3274851Z 3fadc669ef11: Download complete
+2026-10-02T16:38:03.4183121Z efa05c660812: Verifying Checksum
+2026-10-02T16:38:03.4185376Z efa05c660812: Download complete
+2026-10-02T16:38:03.4671239Z f4e7f62f4b80: Verifying Checksum
+2026-10-02T16:38:03.4673025Z f4e7f62f4b80: Download complete
+2026-10-02T16:38:03.5473392Z 5e1c03b67a78: Download complete
+2026-10-02T16:38:03.6136619Z 14e6209d5fa8: Verifying Checksum
+2026-10-02T16:38:03.6138963Z 14e6209d5fa8: Download complete
+2026-10-02T16:38:03.6533821Z d63c4408fdb7: Verifying Checksum
+2026-10-02T16:38:03.6535538Z d63c4408fdb7: Download complete
+2026-10-02T16:38:04.3037297Z 20043066d3d5: Pull complete
+2026-10-02T16:38:06.4420245Z 3fadc669ef11: Pull complete
+2026-10-02T16:38:06.5997034Z 7084ac8f4ab6: Pull complete
+2026-10-02T16:38:06.6172234Z beb0d870d438: Pull complete
+2026-10-02T16:38:07.3928498Z d63c4408fdb7: Pull complete
+2026-10-02T16:38:07.4010166Z efa05c660812: Pull complete
+2026-10-02T16:38:07.4111055Z f4e7f62f4b80: Pull complete
+2026-10-02T16:38:07.4197894Z 5e1c03b67a78: Pull complete
+2026-10-02T16:38:07.4288387Z 14e6209d5fa8: Pull complete
+2026-10-02T16:38:07.4323617Z Digest: sha256:87178a0ee3e2f52980ba356d38646ed1056705ff2d5ff281f8965456eaa0c1e3
+2026-10-02T16:38:07.4335779Z Status: Downloaded newer image for rabbitmq:3
+2026-10-02T16:38:07.4345662Z docker.io/library/rabbitmq:3
+2026-10-02T16:38:07.4381569Z ##[command]/usr/bin/docker create --name af0cd58036ba42b3b0205a4d1952fdff_rabbitmq3_531364 --label c283e0 --network github_network_c8d4e52c63764bdea9180543d787db9c --network-alias rabbitmq -p 5672:5672 --health-cmd "rabbitmq-diagnostics check_port_connectivity" --health-interval 10s --health-timeout 5s --health-retries 5 -e GITHUB_ACTIONS=true -e CI=true rabbitmq:3
+2026-10-02T16:38:07.4715449Z 7afba12ae632205d60ae3ee71832b283b9c8b6cea2705a3d145455f82c4c7275
+2026-10-02T16:38:07.4743108Z ##[command]/usr/bin/docker start 7afba12ae632205d60ae3ee71832b283b9c8b6cea2705a3d145455f82c4c7275
+2026-10-02T16:38:07.6745240Z 7afba12ae632205d60ae3ee71832b283b9c8b6cea2705a3d145455f82c4c7275
+2026-10-02T16:38:07.6767043Z ##[command]/usr/bin/docker ps --all --filter id=7afba12ae632205d60ae3ee71832b283b9c8b6cea2705a3d145455f82c4c7275 --filter status=running --no-trunc --format "{{.ID}} {{.Status}}"
+2026-10-02T16:38:07.6927615Z 7afba12ae632205d60ae3ee71832b283b9c8b6cea2705a3d145455f82c4c7275 Up Less than a second (health: starting)
+2026-10-02T16:38:07.6939500Z ##[command]/usr/bin/docker port 7afba12ae632205d60ae3ee71832b283b9c8b6cea2705a3d145455f82c4c7275
+2026-10-02T16:38:07.7108144Z 5672/tcp -> 0.0.0.0:5672
+2026-10-02T16:38:07.7108982Z 5672/tcp -> [::]:5672
+2026-10-02T16:38:07.7162344Z ##[endgroup]
+2026-10-02T16:38:07.7175161Z ##[group]Waiting for all services to be ready
+2026-10-02T16:38:07.7193211Z ##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" 7afba12ae632205d60ae3ee71832b283b9c8b6cea2705a3d145455f82c4c7275
+2026-10-02T16:38:07.7362537Z starting
+2026-10-02T16:38:07.7408805Z rabbitmq service is starting, waiting 2 seconds before checking again.
+2026-10-02T16:38:09.7413778Z ##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" 7afba12ae632205d60ae3ee71832b283b9c8b6cea2705a3d145455f82c4c7275
+2026-10-02T16:38:09.7584829Z starting
+2026-10-02T16:38:09.7600907Z rabbitmq service is starting, waiting 4 seconds before checking again.
+2026-10-02T16:38:13.7655051Z ##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" 7afba12ae632205d60ae3ee71832b283b9c8b6cea2705a3d145455f82c4c7275
+2026-10-02T16:38:13.7786712Z starting
+2026-10-02T16:38:13.7800004Z rabbitmq service is starting, waiting 9 seconds before checking again.
+2026-10-02T16:38:22.8425397Z ##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" 7afba12ae632205d60ae3ee71832b283b9c8b6cea2705a3d145455f82c4c7275
+2026-10-02T16:38:22.8556811Z healthy
+2026-10-02T16:38:22.8575782Z rabbitmq service is healthy.
+2026-10-02T16:38:22.8576974Z ##[endgroup]

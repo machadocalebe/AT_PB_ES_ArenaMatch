@@ -1,0 +1,36 @@
+﻿2026-10-02T16:38:08.0342404Z ##[group]Run npm run lint --if-present
+2026-10-02T16:38:08.0342783Z [36;1mnpm run lint --if-present[0m
+2026-10-02T16:38:08.0384475Z shell: /usr/bin/bash -e {0}
+2026-10-02T16:38:08.0384832Z ##[endgroup]
+2026-10-02T16:38:08.1347953Z 
+2026-10-02T16:38:08.1348728Z > react@0.0.0 lint
+2026-10-02T16:38:08.1349270Z > eslint .
+2026-10-02T16:38:08.1349532Z 
+2026-10-02T16:38:09.2997832Z 
+2026-10-02T16:38:09.3017538Z /home/runner/work/Tp5_PB_ES_ArenaMatch/Tp5_PB_ES_ArenaMatch/frontArenaMatch/src/components/Agenda.jsx
+2026-10-02T16:38:09.3060821Z   45:21  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+2026-10-02T16:38:09.3087503Z 
+2026-10-02T16:38:09.3098741Z Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+2026-10-02T16:38:09.3107609Z * Update external systems with the latest state from React.
+2026-10-02T16:38:09.3109640Z * Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+2026-10-02T16:38:09.3110928Z 
+2026-10-02T16:38:09.3112873Z Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+2026-10-02T16:38:09.3114607Z 
+2026-10-02T16:38:09.3114981Z   43 |   };
+2026-10-02T16:38:09.3115547Z   44 |
+2026-10-02T16:38:09.3116422Z > 45 |   useEffect(() => { carregarDados(); }, []);
+2026-10-02T16:38:09.3117819Z      |                     ^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+2026-10-02T16:38:09.3118779Z   46 |
+2026-10-02T16:38:09.3119487Z   47 |   const handleCriarReserva = async (e) => {
+2026-10-02T16:38:09.3120527Z   48 |     e.preventDefault();  react-hooks/set-state-in-effect
+2026-10-02T16:38:09.3149320Z ##[error]  64:16  error  'error' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               no-unused-vars
+2026-10-02T16:38:09.3163891Z 
+2026-10-02T16:38:09.3164936Z /home/runner/work/Tp5_PB_ES_ArenaMatch/Tp5_PB_ES_ArenaMatch/frontArenaMatch/src/components/GestaoQuadras.jsx
+2026-10-02T16:38:09.3233966Z ##[warning]  44:6   warning  React Hook useEffect has a missing dependency: 'carregarQuadras'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+2026-10-02T16:38:09.3236142Z ##[error]  52:14  error    'error' is defined but never used                                                                                   no-unused-vars
+2026-10-02T16:38:09.3237792Z ##[error]  61:14  error    'error' is defined but never used                                                                                   no-unused-vars
+2026-10-02T16:38:09.3239205Z ##[error]  87:14  error    'error' is defined but never used                                                                                   no-unused-vars
+2026-10-02T16:38:09.3240010Z 
+2026-10-02T16:38:09.3240400Z ✖ 6 problems (5 errors, 1 warning)
+2026-10-02T16:38:09.3240598Z 
+2026-10-02T16:38:09.3663274Z ##[error]Process completed with exit code 1.

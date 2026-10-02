@@ -1,0 +1,194 @@
+﻿2026-10-02T16:38:00.8913515Z Current runner version: '2.337.0'
+2026-10-02T16:38:00.8936576Z ##[group]Runner Image Provisioner
+2026-10-02T16:38:00.8937599Z Hosted Compute Agent
+2026-10-02T16:38:00.8938190Z Version: 20260901.588
+2026-10-02T16:38:00.8938758Z Commit: f88ec8081b781fac6c440065ac7ff9e710ce3d0b
+2026-10-02T16:38:00.8939404Z Build Date: 2026-09-01T19:56:44Z
+2026-10-02T16:38:00.8940117Z Worker ID: {beb4860c-c283-468d-8edb-02b2bb04e92a}
+2026-10-02T16:38:00.8941081Z Azure Region: westus3
+2026-10-02T16:38:00.8941615Z ##[endgroup]
+2026-10-02T16:38:00.8943078Z ##[group]Operating System
+2026-10-02T16:38:00.8943715Z Ubuntu
+2026-10-02T16:38:00.8944203Z 24.04.5
+2026-10-02T16:38:00.8944648Z LTS
+2026-10-02T16:38:00.8945136Z ##[endgroup]
+2026-10-02T16:38:00.8945620Z ##[group]Runner Image
+2026-10-02T16:38:00.8946200Z Image: ubuntu-24.04
+2026-10-02T16:38:00.8946713Z Version: 20260927.320.1
+2026-10-02T16:38:00.8948010Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260927.320/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-02T16:38:00.8949381Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260927.320
+2026-10-02T16:38:00.8950303Z ##[endgroup]
+2026-10-02T16:38:00.8951344Z ##[group]GITHUB_TOKEN Permissions
+2026-10-02T16:38:00.8953264Z Contents: read
+2026-10-02T16:38:00.8953780Z Metadata: read
+2026-10-02T16:38:00.8954268Z Packages: read
+2026-10-02T16:38:00.8954815Z ##[endgroup]
+2026-10-02T16:38:00.8956906Z Secret source: Actions
+2026-10-02T16:38:00.8957815Z Cache mode: write
+2026-10-02T16:38:00.8958433Z Prepare workflow directory
+2026-10-02T16:38:00.9381855Z Prepare all required actions
+2026-10-02T16:38:00.9429757Z Getting action download info
+2026-10-02T16:38:01.2629679Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-02T16:38:01.3355354Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+2026-10-02T16:38:01.4902950Z Complete job name: 🎨 Build - Frontend React
+2026-10-02T16:38:01.5573588Z ##[group]Run actions/checkout@v4
+2026-10-02T16:38:01.5574564Z with:
+2026-10-02T16:38:01.5575100Z   repository: machadocalebe/Tp5_PB_ES_ArenaMatch
+2026-10-02T16:38:01.5579288Z   token: ***
+2026-10-02T16:38:01.5579748Z   ssh-strict: true
+2026-10-02T16:38:01.5580196Z   ssh-user: git
+2026-10-02T16:38:01.5580706Z   persist-credentials: true
+2026-10-02T16:38:01.5581213Z   clean: true
+2026-10-02T16:38:01.5581706Z   sparse-checkout-cone-mode: true
+2026-10-02T16:38:01.5582255Z   fetch-depth: 1
+2026-10-02T16:38:01.5582715Z   fetch-tags: false
+2026-10-02T16:38:01.5583232Z   show-progress: true
+2026-10-02T16:38:01.5583703Z   lfs: false
+2026-10-02T16:38:01.5584162Z   submodules: false
+2026-10-02T16:38:01.5584645Z   set-safe-directory: true
+2026-10-02T16:38:01.5585158Z   allow-unsafe-pr-checkout: false
+2026-10-02T16:38:01.5586015Z ##[endgroup]
+2026-10-02T16:38:01.6690692Z Syncing repository: machadocalebe/Tp5_PB_ES_ArenaMatch
+2026-10-02T16:38:01.6692646Z ##[group]Getting Git version info
+2026-10-02T16:38:01.6693489Z Working directory is '/home/runner/work/Tp5_PB_ES_ArenaMatch/Tp5_PB_ES_ArenaMatch'
+2026-10-02T16:38:01.6694501Z [command]/usr/bin/git version
+2026-10-02T16:38:01.6731872Z git version 2.55.0
+2026-10-02T16:38:01.6752491Z ##[endgroup]
+2026-10-02T16:38:01.6768362Z Temporarily overriding HOME='/home/runner/work/_temp/91a18f58-acd5-40e6-b515-f8f7cd5b274c' before making global git config changes
+2026-10-02T16:38:01.6771183Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-02T16:38:01.6774871Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Tp5_PB_ES_ArenaMatch/Tp5_PB_ES_ArenaMatch
+2026-10-02T16:38:01.6830309Z Deleting the contents of '/home/runner/work/Tp5_PB_ES_ArenaMatch/Tp5_PB_ES_ArenaMatch'
+2026-10-02T16:38:01.6835813Z ##[group]Initializing the repository
+2026-10-02T16:38:01.6841539Z [command]/usr/bin/git init /home/runner/work/Tp5_PB_ES_ArenaMatch/Tp5_PB_ES_ArenaMatch
+2026-10-02T16:38:01.6941788Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-02T16:38:01.6944293Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-02T16:38:01.6946152Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-02T16:38:01.6948075Z hint: call:
+2026-10-02T16:38:01.6949026Z hint:
+2026-10-02T16:38:01.6950063Z hint: 	git config --global init.defaultBranch <name>
+2026-10-02T16:38:01.6951341Z hint:
+2026-10-02T16:38:01.6952515Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-02T16:38:01.6954352Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-02T16:38:01.6955839Z hint:
+2026-10-02T16:38:01.6956899Z hint: 	git branch -m <name>
+2026-10-02T16:38:01.6957894Z hint:
+2026-10-02T16:38:01.6959205Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-02T16:38:01.6961030Z Initialized empty Git repository in /home/runner/work/Tp5_PB_ES_ArenaMatch/Tp5_PB_ES_ArenaMatch/.git/
+2026-10-02T16:38:01.6964176Z [command]/usr/bin/git remote add origin https://github.com/machadocalebe/Tp5_PB_ES_ArenaMatch
+2026-10-02T16:38:01.7004599Z ##[endgroup]
+2026-10-02T16:38:01.7005487Z ##[group]Disabling automatic garbage collection
+2026-10-02T16:38:01.7010299Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-02T16:38:01.7038725Z ##[endgroup]
+2026-10-02T16:38:01.7039383Z ##[group]Setting up auth
+2026-10-02T16:38:01.7048030Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-02T16:38:01.7077973Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-02T16:38:01.7395818Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-02T16:38:01.7424645Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-02T16:38:01.7621400Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-02T16:38:01.7649799Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-02T16:38:01.7824340Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-02T16:38:01.7857598Z ##[endgroup]
+2026-10-02T16:38:01.7859126Z ##[group]Fetching the repository
+2026-10-02T16:38:01.7869920Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +5d054be376933305374f58cb5ef9bfa6f8bf3ecc:refs/remotes/origin/main
+2026-10-02T16:38:02.2749006Z From https://github.com/machadocalebe/Tp5_PB_ES_ArenaMatch
+2026-10-02T16:38:02.2751098Z  * [new ref]         5d054be376933305374f58cb5ef9bfa6f8bf3ecc -> origin/main
+2026-10-02T16:38:02.2753333Z ##[endgroup]
+2026-10-02T16:38:02.2754249Z ##[group]Determining the checkout info
+2026-10-02T16:38:02.2755262Z ##[endgroup]
+2026-10-02T16:38:02.2761186Z [command]/usr/bin/git sparse-checkout disable
+2026-10-02T16:38:02.2810301Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-02T16:38:02.2839329Z ##[group]Checking out the ref
+2026-10-02T16:38:02.2850291Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-10-02T16:38:02.2931009Z Switched to a new branch 'main'
+2026-10-02T16:38:02.2937033Z branch 'main' set up to track 'origin/main'.
+2026-10-02T16:38:02.2940944Z ##[endgroup]
+2026-10-02T16:38:02.2974509Z [command]/usr/bin/git log -1 --format=%H
+2026-10-02T16:38:02.2996077Z 5d054be376933305374f58cb5ef9bfa6f8bf3ecc
+2026-10-02T16:38:02.3236623Z ##[group]Run actions/setup-node@v4
+2026-10-02T16:38:02.3237285Z with:
+2026-10-02T16:38:02.3237652Z   node-version: 22
+2026-10-02T16:38:02.3238037Z   cache: npm
+2026-10-02T16:38:02.3238510Z   cache-dependency-path: frontArenaMatch/package-lock.json
+2026-10-02T16:38:02.3239357Z   always-auth: false
+2026-10-02T16:38:02.3239915Z   check-latest: false
+2026-10-02T16:38:02.3243605Z   token: ***
+2026-10-02T16:38:02.3243973Z ##[endgroup]
+2026-10-02T16:38:02.4636723Z Found in cache @ /opt/hostedtoolcache/node/22.23.3/x64
+2026-10-02T16:38:02.4640978Z (node:2290) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-02T16:38:02.4643089Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-02T16:38:02.4645208Z ##[group]Environment details
+2026-10-02T16:38:02.8359944Z node: v22.23.3
+2026-10-02T16:38:02.8361803Z npm: 10.9.9
+2026-10-02T16:38:02.8363199Z yarn: 1.22.22
+2026-10-02T16:38:02.8366088Z ##[endgroup]
+2026-10-02T16:38:02.8426242Z [command]/opt/hostedtoolcache/node/22.23.3/x64/bin/npm config get cache
+2026-10-02T16:38:02.9437064Z /home/runner/.npm
+2026-10-02T16:38:03.1543286Z npm cache is not found
+2026-10-02T16:38:03.1661561Z ##[group]Run npm ci
+2026-10-02T16:38:03.1661969Z [36;1mnpm ci[0m
+2026-10-02T16:38:03.1857357Z shell: /usr/bin/bash -e {0}
+2026-10-02T16:38:03.1857748Z ##[endgroup]
+2026-10-02T16:38:07.9930984Z 
+2026-10-02T16:38:07.9940996Z added 191 packages, and audited 192 packages in 5s
+2026-10-02T16:38:07.9941762Z 
+2026-10-02T16:38:07.9942177Z 40 packages are looking for funding
+2026-10-02T16:38:07.9942817Z   run `npm fund` for details
+2026-10-02T16:38:08.0039002Z 
+2026-10-02T16:38:08.0039852Z 8 vulnerabilities (2 moderate, 6 high)
+2026-10-02T16:38:08.0040323Z 
+2026-10-02T16:38:08.0040621Z To address all issues, run:
+2026-10-02T16:38:08.0041138Z   npm audit fix
+2026-10-02T16:38:08.0041389Z 
+2026-10-02T16:38:08.0041660Z Run `npm audit` for details.
+2026-10-02T16:38:08.0342434Z ##[group]Run npm run lint --if-present
+2026-10-02T16:38:08.0342787Z [36;1mnpm run lint --if-present[0m
+2026-10-02T16:38:08.0384500Z shell: /usr/bin/bash -e {0}
+2026-10-02T16:38:08.0384836Z ##[endgroup]
+2026-10-02T16:38:08.1348045Z 
+2026-10-02T16:38:08.1348737Z > react@0.0.0 lint
+2026-10-02T16:38:08.1349290Z > eslint .
+2026-10-02T16:38:08.1349540Z 
+2026-10-02T16:38:09.2997899Z 
+2026-10-02T16:38:09.3017563Z /home/runner/work/Tp5_PB_ES_ArenaMatch/Tp5_PB_ES_ArenaMatch/frontArenaMatch/src/components/Agenda.jsx
+2026-10-02T16:38:09.3060865Z   45:21  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+2026-10-02T16:38:09.3087538Z 
+2026-10-02T16:38:09.3098784Z Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+2026-10-02T16:38:09.3107735Z * Update external systems with the latest state from React.
+2026-10-02T16:38:09.3109653Z * Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+2026-10-02T16:38:09.3110938Z 
+2026-10-02T16:38:09.3112885Z Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+2026-10-02T16:38:09.3114616Z 
+2026-10-02T16:38:09.3114992Z   43 |   };
+2026-10-02T16:38:09.3115555Z   44 |
+2026-10-02T16:38:09.3116432Z > 45 |   useEffect(() => { carregarDados(); }, []);
+2026-10-02T16:38:09.3117829Z      |                     ^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+2026-10-02T16:38:09.3118796Z   46 |
+2026-10-02T16:38:09.3119495Z   47 |   const handleCriarReserva = async (e) => {
+2026-10-02T16:38:09.3120536Z   48 |     e.preventDefault();  react-hooks/set-state-in-effect
+2026-10-02T16:38:09.3149401Z ##[error]  64:16  error  'error' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               no-unused-vars
+2026-10-02T16:38:09.3163915Z 
+2026-10-02T16:38:09.3164960Z /home/runner/work/Tp5_PB_ES_ArenaMatch/Tp5_PB_ES_ArenaMatch/frontArenaMatch/src/components/GestaoQuadras.jsx
+2026-10-02T16:38:09.3233990Z ##[warning]  44:6   warning  React Hook useEffect has a missing dependency: 'carregarQuadras'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+2026-10-02T16:38:09.3236151Z ##[error]  52:14  error    'error' is defined but never used                                                                                   no-unused-vars
+2026-10-02T16:38:09.3237807Z ##[error]  61:14  error    'error' is defined but never used                                                                                   no-unused-vars
+2026-10-02T16:38:09.3239212Z ##[error]  87:14  error    'error' is defined but never used                                                                                   no-unused-vars
+2026-10-02T16:38:09.3240016Z 
+2026-10-02T16:38:09.3240406Z ✖ 6 problems (5 errors, 1 warning)
+2026-10-02T16:38:09.3240601Z 
+2026-10-02T16:38:09.3663545Z ##[error]Process completed with exit code 1.
+2026-10-02T16:38:09.3798014Z Post job cleanup.
+2026-10-02T16:38:09.4727832Z [command]/usr/bin/git version
+2026-10-02T16:38:09.4778264Z git version 2.55.0
+2026-10-02T16:38:09.4839652Z Temporarily overriding HOME='/home/runner/work/_temp/d25ed8e6-9a41-4cdb-8be0-1b65f5d77daa' before making global git config changes
+2026-10-02T16:38:09.4841593Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-02T16:38:09.4848161Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Tp5_PB_ES_ArenaMatch/Tp5_PB_ES_ArenaMatch
+2026-10-02T16:38:09.4873648Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-02T16:38:09.4920553Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-02T16:38:09.5198001Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-02T16:38:09.5230436Z http.https://github.com/.extraheader
+2026-10-02T16:38:09.5249609Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-02T16:38:09.5291366Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-02T16:38:09.5552739Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-02T16:38:09.5609480Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-02T16:38:09.6050943Z Cleaning up orphan processes
+2026-10-02T16:38:09.6286439Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-node@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

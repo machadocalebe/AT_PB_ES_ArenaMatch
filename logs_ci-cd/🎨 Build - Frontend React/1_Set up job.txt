@@ -1,0 +1,33 @@
+﻿2026-10-02T16:38:00.8912873Z Current runner version: '2.337.0'
+2026-10-02T16:38:00.8936541Z ##[group]Runner Image Provisioner
+2026-10-02T16:38:00.8937592Z Hosted Compute Agent
+2026-10-02T16:38:00.8938186Z Version: 20260901.588
+2026-10-02T16:38:00.8938754Z Commit: f88ec8081b781fac6c440065ac7ff9e710ce3d0b
+2026-10-02T16:38:00.8939400Z Build Date: 2026-09-01T19:56:44Z
+2026-10-02T16:38:00.8940112Z Worker ID: {beb4860c-c283-468d-8edb-02b2bb04e92a}
+2026-10-02T16:38:00.8941075Z Azure Region: westus3
+2026-10-02T16:38:00.8941611Z ##[endgroup]
+2026-10-02T16:38:00.8943065Z ##[group]Operating System
+2026-10-02T16:38:00.8943711Z Ubuntu
+2026-10-02T16:38:00.8944199Z 24.04.5
+2026-10-02T16:38:00.8944645Z LTS
+2026-10-02T16:38:00.8945133Z ##[endgroup]
+2026-10-02T16:38:00.8945617Z ##[group]Runner Image
+2026-10-02T16:38:00.8946156Z Image: ubuntu-24.04
+2026-10-02T16:38:00.8946710Z Version: 20260927.320.1
+2026-10-02T16:38:00.8947817Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260927.320/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-02T16:38:00.8949376Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260927.320
+2026-10-02T16:38:00.8950299Z ##[endgroup]
+2026-10-02T16:38:00.8951339Z ##[group]GITHUB_TOKEN Permissions
+2026-10-02T16:38:00.8953248Z Contents: read
+2026-10-02T16:38:00.8953777Z Metadata: read
+2026-10-02T16:38:00.8954266Z Packages: read
+2026-10-02T16:38:00.8954812Z ##[endgroup]
+2026-10-02T16:38:00.8956748Z Secret source: Actions
+2026-10-02T16:38:00.8957811Z Cache mode: write
+2026-10-02T16:38:00.8958429Z Prepare workflow directory
+2026-10-02T16:38:00.9381824Z Prepare all required actions
+2026-10-02T16:38:00.9429722Z Getting action download info
+2026-10-02T16:38:01.2629650Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-02T16:38:01.3355331Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+2026-10-02T16:38:01.4902925Z Complete job name: 🎨 Build - Frontend React

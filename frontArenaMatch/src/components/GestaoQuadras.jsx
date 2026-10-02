@@ -36,6 +36,7 @@ export default function GestaoQuadras() {
     }
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const inicializar = async () => {
       await carregarQuadras();
@@ -50,6 +51,7 @@ export default function GestaoQuadras() {
       setNome(''); setPrecoHora('');
       carregarQuadras();
     } catch (error) {
+      console.error(error);
       alert("Erro ao criar quadra!");
     }
   };
@@ -58,7 +60,10 @@ export default function GestaoQuadras() {
     try {
       await api.patch(`/quadras/${id}/manutencao`);
       carregarQuadras();
-    } catch (error) { alert("Erro ao alterar manutenção!"); }
+    } catch (error) { 
+      console.error(error);
+      alert("Erro ao alterar manutenção!"); 
+    }
   };
 
   const handleExcluir = async (id) => {
@@ -85,6 +90,7 @@ export default function GestaoQuadras() {
       carregarAvaliacoes(quadraId); // Recarrega a média
       alert("Avaliação registrada com sucesso!");
     } catch (error) {
+      console.error(error);
       alert("Erro ao enviar avaliação.");
     }
   };
