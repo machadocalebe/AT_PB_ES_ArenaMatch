@@ -1,34 +1,31 @@
-/* Agenda.css - Apple Style */
+/* Agenda.css - Pastel Style */
 
 .agenda-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  color: #1d1d1f;
 }
 
 .agenda-header {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
 .agenda-header h1 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  letter-spacing: -0.015em;
+  font-size: 2.2rem;
+  color: var(--text-primary);
   margin-bottom: 0.5rem;
 }
 
 .agenda-header p {
-  font-size: 1.1rem;
-  color: #86868b;
+  color: var(--text-secondary);
 }
 
 .agenda-layout {
   display: grid;
   grid-template-columns: 320px 1fr;
   gap: 2rem;
+  align-items: start; /* Importante para a sidebar fixar */
 }
 
 @media (max-width: 900px) {
@@ -37,133 +34,51 @@
   }
 }
 
-.glass-card {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  border-radius: 18px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  padding: 2rem;
+.agenda-sidebar {
+  position: sticky;
+  top: 2rem;
 }
 
-.new-reservation-card h2 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 1.5rem;
-  color: #1d1d1f;
-}
-
-.form-reserva {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-
-.input-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.input-group label {
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: #86868b;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.input-group input,
-.input-group select {
-  padding: 0.8rem 1rem;
-  border-radius: 12px;
-  border: 1px solid #d2d2d7;
-  background-color: rgba(255, 255, 255, 0.8);
-  font-size: 1rem;
-  color: #1d1d1f;
-  transition: all 0.2s ease;
-  outline: none;
-}
-
-.input-group input:focus,
-.input-group select:focus {
-  border-color: #0071e3;
-  box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.1);
-  background-color: #fff;
-}
-
-.btn-apple-primary {
-  margin-top: 1rem;
-  background-color: #0071e3;
-  color: #fff;
-  border: none;
-  border-radius: 20px;
-  padding: 0.8rem 1.5rem;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.btn-apple-primary:hover {
-  background-color: #0077ed;
-  transform: scale(1.02);
-}
-
-.btn-apple-primary:active {
-  transform: scale(0.98);
+.agenda-main {
+  background-color: var(--card-bg);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+  height: 700px;
 }
 
 /* Calendar Overrides */
-.agenda-main {
-  height: 700px;
-  padding: 1.5rem;
-}
-
 .apple-calendar .rbc-toolbar {
   margin-bottom: 1.5rem;
 }
 
 .apple-calendar .rbc-toolbar button {
   border-radius: 8px;
-  border: 1px solid #d2d2d7;
-  color: #1d1d1f;
-  font-family: inherit;
-  transition: all 0.2s ease;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  background: var(--bg-color);
+  margin: 0 4px;
 }
 
 .apple-calendar .rbc-toolbar button:active,
 .apple-calendar .rbc-toolbar button.rbc-active {
-  background-color: #0071e3;
-  color: #fff;
-  border-color: #0071e3;
+  background-color: var(--secondary);
+  color: white;
+  border-color: var(--secondary);
   box-shadow: none;
 }
 
 .apple-calendar .rbc-event {
-  background-color: #0071e3;
+  background-color: var(--primary);
   border-radius: 6px;
-  padding: 4px 8px;
-  box-shadow: 0 2px 4px rgba(0, 113, 227, 0.3);
-  transition: transform 0.2s;
-}
-
-.apple-calendar .rbc-event:hover {
-  transform: scale(1.02);
+  padding: 4px;
+  border: 1px solid var(--primary-hover);
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(168, 213, 186, 0.4);
 }
 
 .apple-calendar .rbc-today {
-  background-color: rgba(0, 113, 227, 0.05);
-}
-
-/* Animations */
-.animate-fade-in {
-  animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  background-color: var(--sidebar-bg); /* Pastel muito claro */
 }

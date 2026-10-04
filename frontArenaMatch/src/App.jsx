@@ -24,7 +24,7 @@ function App() {
       {/* Barra Lateral (Sidebar) */}
       <aside className="sidebar">
         <div className="logo-area">
-          <span className="logo-icon">🎾</span>
+          <span className="logo-icon">A</span>
           <h2>ArenaMatch</h2>
         </div>
 
@@ -33,13 +33,13 @@ function App() {
             className={`menu-btn ${abaAtiva === 'agenda' ? 'active' : ''}`}
             onClick={() => setAbaAtiva('agenda')}
           >
-             🗓️ Reservas
+             Reservas
           </button>
           <button 
             className={`menu-btn ${abaAtiva === 'quadras' ? 'active' : ''}`}
             onClick={() => setAbaAtiva('quadras')}
           >
-             🏟️ Gestão de Quadras
+             Gestão de Quadras
           </button>
         </nav>
 

@@ -1,12 +1,9 @@
 /* eslint-disable */
 import { useState, useEffect } from 'react';
 import { Calendar, dateFnsLocalizer } from 'react-big-calendar';
-import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop';
-import format from 'date-fns/format';
-import parse from 'date-fns/parse';
-import startOfWeek from 'date-fns/startOfWeek';
-import getDay from 'date-fns/getDay';
-import ptBR from 'date-fns/locale/pt-BR';
+import withDragAndDropMod from 'react-big-calendar/lib/addons/dragAndDrop';
+import { format, parse, startOfWeek, getDay } from 'date-fns';
+import { ptBR } from 'date-fns/locale/pt-BR';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
 import api from '../services/api';
@@ -14,6 +11,9 @@ import './Agenda.css';
 
 const locales = { 'pt-BR': ptBR };
 const localizer = dateFnsLocalizer({ format, parse, startOfWeek, getDay, locales });
+
+// Vite / ESM CommonJS interop fix
+const withDragAndDrop = withDragAndDropMod.default ? withDragAndDropMod.default : withDragAndDropMod;
 const DnDCalendar = withDragAndDrop(Calendar);
 
 export default function Agenda() {
@@ -62,7 +62,7 @@ export default function Agenda() {
 
   const onEventDrop = async ({ event, start, end }) => {
     try {
-      const dataHoraInicio = start.toISOString().slice(0, 19);
+      const dataHoraInicio = format(start, "yyyy-MM-dd'T'HH:mm:ss");
       await api.put(`/reservas/${event.id}`, { 
         nomeLocatario: event.nomeLocatario,
         quadraId: event.quadraId,
