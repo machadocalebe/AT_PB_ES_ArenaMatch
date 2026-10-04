@@ -59,8 +59,13 @@ public class QuadraController {
 
     @GetMapping("/{id}/avaliacoes")
     public ResponseEntity<?> listarAvaliacoes(@PathVariable Long id) {
-        // O ArenaMatch pede a lista de notas para o microsserviço
-        return ResponseEntity.ok(avaliacaoClient.buscarNotasDaQuadra(id));
+        try {
+            // O ArenaMatch pede a lista de notas para o microsserviço
+            return ResponseEntity.ok(avaliacaoClient.buscarNotasDaQuadra(id));
+        } catch (Exception e) {
+            // Se o microsserviço não estiver rodando (Connection refused), retorna vazio pacificamente
+            return ResponseEntity.ok(java.util.Collections.emptyList());
+        }
     }
 
     @PostMapping("/{id}/avaliacoes")
