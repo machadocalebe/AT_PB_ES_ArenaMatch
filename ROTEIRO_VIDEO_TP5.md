@@ -1,33 +1,27 @@
-# Roteiro de Gravação - Vídeo Final ArenaMatch (Máx 2 minutos)
+# Roteiro de Gravação - Vídeo Final ArenaMatch (AT)
+**Tempo Máximo:** 2 minutos.
+**Foco do Vídeo:** Mostrar o sistema rodando na prática pelo Frontend, provar a comunicação com o Backend, demonstrar a autenticação e comprovar o funcionamento da Mensageria (RabbitMQ).
 
-> **Dica:** O vídeo é muito curto (120 segundos). Seja direto, não perca tempo explicando código linha por linha. O foco é mostrar o **resultado da arquitetura funcionando**. Deixe tudo aberto antes de começar a gravar (Terminal, Docker Desktop, GitHub e Navegador).
+> **Dica de Preparação:** Deixe o Frontend aberto de um lado da tela e o painel do RabbitMQ (`http://localhost:15672`) ou o terminal rodando os logs do Docker do outro lado. 
 
 ---
 
-## 🎬 0:00 - 0:15 | Introdução e Escopo
-**O que mostrar na tela:** O diagrama da arquitetura (pode ser o que está no `DOCUMENTACAO_TP5.md`) ou a IDE mostrando a estrutura do projeto.
+## 🎬 0:00 - 0:30 | Introdução, Evolução e Autenticação
+**O que mostrar na tela:** A tela inicial de Login do Frontend. Faça o login na conta.
 **O que falar:**
-*"Olá! Este é o projeto ArenaMatch, desenvolvido ao longo do bloco. O sistema começou como um monólito simples e, através de um processo ágil, evoluiu para uma arquitetura orientada a eventos e microsserviços. O objetivo foi aplicar responsabilidade única, baixo acoplamento e DDD, utilizando Spring Boot, RabbitMQ para mensageria assíncrona e React no frontend."*
+*"Olá! Este é o ArenaMatch. O projeto começou como um monólito simples e, através de um processo de desenvolvimento ágil, nós o evoluímos aplicando DDD e padrões de microsserviços. Implementei a segurança completa da API RESTful com Spring Security e JWT. Como podem ver, ao fazer login no Frontend em React, um token é gerado pelo Backend e utilizado para autorizar todas as requisições seguintes."*
 
-## 💻 0:15 - 0:45 | Demonstração Local (O Sistema em Ação)
-**O que mostrar na tela:** Navegador dividido. De um lado a interface do React (Agenda e Quadras), do outro o painel web do RabbitMQ (http://localhost:15672) ou os logs do Docker no terminal. Faça uma reserva rapidamente.
+## 💻 0:30 - 1:10 | Comunicação Front x Back e Usabilidade
+**O que mostrar na tela:** A aba de **Gestão de Quadras** (crie uma quadra rapidinho) e depois vá para a **Agenda** e arraste um evento (Drag & Drop).
 **O que falar:**
-*"Vou demonstrar o ambiente em execução local, que foi totalmente conteinerizado via Docker Compose. Aqui no Frontend, quando crio uma reserva de quadra, a API RESTful do backend recebe a requisição e publica um evento no RabbitMQ. Podemos ver a mensagem trafegando pela fila de forma assíncrona, desacoplando o recebimento da requisição do processamento posterior, como envio de notificações."*
+*"Aqui no painel principal, temos toda a comunicação síncrona via requisições REST ocorrendo de forma fluida. O design da interface foi feito para ser responsivo e moderno. Na Agenda, implementamos a funcionalidade de Drag and Drop: ao arrastar uma reserva, o Frontend envia um `PUT` para o Backend que recalcula os horários e valida choques de agenda diretamente no banco de dados."*
 
-## 🐳 0:45 - 1:15 | Monitoramento e Kubernetes (Pronto para Produção)
-**O que mostrar na tela:** 
-1. Endpoint do Actuator: `http://localhost:8080/actuator/health` (mostrando RabbitMQ e DB `UP`).
-2. Rapidamente mostrar os arquivos dentro da pasta `k8s/` na IDE.
+## 🐇 1:10 - 1:50 | Mensageria (RabbitMQ) na Prática!
+**O que mostrar na tela:** Volte para a aba de **Gestão de Quadras**. Deixe os logs do Docker ou a tela do RabbitMQ visível. Escreva uma avaliação e clique em Enviar.
 **O que falar:**
-*"Pensando em produção, a saúde da aplicação é monitorada via Spring Actuator. Também criamos manifestos do Kubernetes, configurando Deployments, Services e um Horizontal Pod Autoscaler (HPA), garantindo que o sistema escale horizontalmente caso o consumo de CPU aumente sob carga."*
+*"O grande destaque da nossa arquitetura orientada a eventos acontece nas avaliações. Quando eu envio uma nova avaliação de quadra aqui no Front, o fluxo não é bloqueante. O Backend recebe o POST e imediatamente dispara um evento para uma fila no RabbitMQ. Em seguida, um Worker assíncrono consome essa mensagem da fila e persiste a avaliação no banco de dados. Isso traz baixo acoplamento e escalabilidade pesada pro sistema."*
 
-## 🚀 1:15 - 1:55 | CI/CD (Esteira Automatizada)
-**O que mostrar na tela:** 
-Página do seu GitHub Actions (a aba com o checkmark verde ✅). Depois clique na aba do Docker Hub mostrando as imagens hospedadas (`arenamatch-backend` e `arenamatch-frontend`).
+## 🏁 1:50 - 2:00 | Encerramento (Docker e CI/CD)
+**O que mostrar na tela:** Apenas finalize a tela do navegador.
 **O que falar:**
-*"Por fim, toda a cultura DevOps foi integrada. A nossa pipeline de CI/CD no GitHub Actions é acionada a cada commit na branch main. Ela roda automaticamente todos os testes unitários com JUnit e Mockito. Passando nos testes, a pipeline realiza o build multi-stage das imagens Docker e faz o push automatizado e seguro usando Secrets diretamente para o meu Docker Hub, entregando a versão mais recente pronta para deploy."*
-
-## 🏁 1:55 - 2:00 | Encerramento
-**O que mostrar na tela:** A tela inicial do seu projeto ou o GitHub.
-**O que falar:**
-*"Com isso, o projeto ArenaMatch atende todos os requisitos arquiteturais e de automação propostos para o bloco. Muito obrigado!"*
+*"Todo esse ambiente está empacotado e rodando localmente via Docker Compose. O código fonte no GitHub já conta com esteiras completas de CI/CD via GitHub Actions e manifestos do Kubernetes, garantindo automação de testes e implantação em produção. Muito obrigado!"*

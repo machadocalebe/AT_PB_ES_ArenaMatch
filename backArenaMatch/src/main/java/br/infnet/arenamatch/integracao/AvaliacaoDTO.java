@@ -7,4 +7,6 @@ public class AvaliacaoDTO {
     private Long id;
     private Long quadraId;
     private Integer nota;
+    private String autor;
+    private String comentario;
 }
