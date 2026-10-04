@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import GestaoQuadras from './components/GestaoQuadras';
 import Agenda from './components/Agenda';
 import Login from './components/Login';
