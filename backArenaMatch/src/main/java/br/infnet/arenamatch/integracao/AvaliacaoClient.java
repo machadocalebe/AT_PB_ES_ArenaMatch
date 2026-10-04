@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
 
-@FeignClient(name = "avaliacoes-ms", url = "http://localhost:8081/api/avaliacoes")
+@FeignClient(name = "avaliacoes-ms", url = "http://localhost:8080/api/avaliacoes")
 public interface AvaliacaoClient {
 
     @GetMapping("/quadra/{quadraId}")

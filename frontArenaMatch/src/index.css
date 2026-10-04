@@ -1,36 +1,61 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
+/* index.css - Apple Style Reset */
 :root {
-  /* Paleta Premium - Tons de Verde Menta e Cinza */
-  --primary: #4ade80;
-  --primary-dark: #16a34a;
-  --bg-app: #e5f5eb; /* Fundo principal da tela inteira */
-  --bg-sidebar: #f0fdf4; /* Verde super claro para a barra lateral */
-  --bg-panel: #ffffff;
-  --text-main: #1e293b;
-  --text-muted: #64748b;
-  --border-light: #f1f5f9;
-  
-  /* Sombras Suaves (Soft-UI) */
-  --shadow-sm: 0 2px 4px rgb(0 0 0 / 0.02);
-  --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 0.05);
-  
-  /* Bordas Arredondadas */
-  --radius-md: 12px;
-  --radius-lg: 24px;
+  --primary: #0071e3;
+  --bg-color: #f5f5f7;
+  --text-primary: #1d1d1f;
+  --text-secondary: #86868b;
 }
 
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
 }
 
 body {
-  background: var(--bg-app);
-  color: var(--text-main);
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden; /* Evita barra de rolagem dupla */
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-color);
+  background-image: radial-gradient(circle at 15% 50%, rgba(0, 113, 227, 0.08), transparent 25%),
+                    radial-gradient(circle at 85% 30%, rgba(52, 199, 89, 0.08), transparent 25%);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+nav {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+nav a {
+  color: var(--text-primary);
+  text-decoration: none;
+  font-weight: 500;
+  margin-left: 1.5rem;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+}
+
+nav a:hover {
+  color: var(--primary);
+}
+
+nav .logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--text-primary);
+  text-decoration: none;
+  margin-left: 0;
 }

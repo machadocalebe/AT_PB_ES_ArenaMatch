@@ -1,10 +1,23 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import GestaoQuadras from './components/GestaoQuadras';
 import Agenda from './components/Agenda';
+import Login from './components/Login';
 import './App.css';
 
 function App() {
   const [abaAtiva, setAbaAtiva] = useState('agenda');
+  const [token, setToken] = useState(localStorage.getItem('token'));
+  const username = localStorage.getItem('username');
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('username');
+    setToken(null);
+  };
+
+  if (!token) {
+    return <Login setToken={setToken} />;
+  }
 
   return (
     <div className="app-container">
@@ -20,21 +33,21 @@ function App() {
             className={`menu-btn ${abaAtiva === 'agenda' ? 'active' : ''}`}
             onClick={() => setAbaAtiva('agenda')}
           >
-             Reservas
+             🗓️ Reservas
           </button>
           <button 
             className={`menu-btn ${abaAtiva === 'quadras' ? 'active' : ''}`}
             onClick={() => setAbaAtiva('quadras')}
           >
-             Gestão de Quadras
+             🏟️ Gestão de Quadras
           </button>
         </nav>
 
         <div className="user-profile">
-          <div className="avatar">AD</div>
+          <div className="avatar">{username ? username.substring(0, 2).toUpperCase() : 'AD'}</div>
           <div className="user-info">
-            <strong>Admin</strong>
-            <span>Plano Premium</span>
+            <strong>{username || 'Usuário'}</strong>
+            <button className="btn-link" style={{textAlign: 'left', padding: 0, marginTop: '4px'}} onClick={handleLogout}>Sair</button>
           </div>
         </div>
       </aside>

@@ -68,6 +68,32 @@ public class ReservaService {
         reservaRepository.deleteById(id);
     }
 
+    public Reserva atualizarReserva(Long id, ReservaRequestDTO dto) {
+        Reserva reserva = reservaRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Reserva não encontrada!"));
+
+        if (reserva.getQuadra().isEmManutencao()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Esta quadra está interditada!");
+        }
+
+        if (!reserva.getDataHoraInicio().equals(dto.getDataHoraInicio()) || !reserva.getQuadra().getId().equals(dto.getQuadraId())) {
+            boolean horarioOcupado = reservaRepository.existsByQuadraIdAndDataHoraInicio(dto.getQuadraId(), dto.getDataHoraInicio());
+            if (horarioOcupado) {
+                throw new ResponseStatusException(HttpStatus.CONFLICT, "Horário indisponível!");
+            }
+        }
+
+        reserva.setDataHoraInicio(dto.getDataHoraInicio());
+        
+        if (dto.getQuadraId() != null && !reserva.getQuadra().getId().equals(dto.getQuadraId())) {
+             Quadra quadra = quadraRepository.findById(dto.getQuadraId())
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Quadra não encontrada!"));
+             reserva.setQuadra(quadra);
+        }
+
+        return reservaRepository.save(reserva);
+    }
+
     public List<Reserva> listarTodas() {
         return reservaRepository.findAll();
     }

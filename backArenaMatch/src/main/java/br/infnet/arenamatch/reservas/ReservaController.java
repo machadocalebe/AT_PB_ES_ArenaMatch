@@ -33,4 +33,9 @@ public class ReservaController {
         reservaService.deletar(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Reserva> atualizar(@PathVariable Long id, @RequestBody ReservaRequestDTO dto) {
+        return ResponseEntity.ok(reservaService.atualizarReserva(id, dto));
+    }
 }
