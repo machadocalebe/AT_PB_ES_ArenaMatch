@@ -124,7 +124,24 @@ Exemplo de resposta ao chamar `http://localhost:8080/actuator/health`:
 
 ---
 
-## 5. Automação com GitHub Actions (CI/CD)
+## 5. Autenticação e Segurança (JWT)
+
+A API RESTful agora conta com uma robusta camada de segurança implementada com **Spring Security**. 
+- Todas as requisições, exceto endpoints públicos como login e o healthcheck do docker, exigem autenticação via token.
+- Um **JwtFilter** atua em toda requisição interceptando o cabeçalho `Authorization: Bearer <token>`.
+- O Frontend foi refatorado utilizando o conceito de **Axios Interceptors**, garantindo que o JWT gerado no Login/Registro seja anexado automaticamente em todas as requisições subsequentes.
+
+---
+
+## 6. Evolução de UI/UX (Frontend)
+
+O frontend React passou por um profundo redesign. Abandonamos bibliotecas genéricas para focar em uma estética minimalista, conhecida como **Apple-style / Tema Pastel**.
+- **Pastel Colors**: Uso de cores sólidas e suaves, sem alto contraste agressivo, facilitando a visualização.
+- **Drag and Drop**: O calendário de agendas (baseado em `react-big-calendar`) agora permite arrastar reservas livremente. A lógica integra-se ao `date-fns` para resolver problemas de Fuso Horário local (evitando o salto para frente do padrão ISO/UTC) e dispara requisições assíncronas `PUT` para recalcular as datas no Backend.
+
+---
+
+## 7. Automação com GitHub Actions (CI/CD)
 
 O arquivo [`.github/workflows/ci-cd.yml`](.github/workflows/ci-cd.yml) define um pipeline de 3 jobs que roda automaticamente a cada `push` ou `pull_request` na branch `main`:
 
@@ -176,7 +193,7 @@ cd backArenaMatch
 
 ---
 
-## 7. Guia de Implantação Completo
+## 8. Guia de Implantação Completo
 
 ### Ambiente Local (Docker Compose)
 ```bash

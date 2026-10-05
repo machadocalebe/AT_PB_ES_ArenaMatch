@@ -1,9 +1,0 @@
-2026-10-02T17:20:58.5030000Z Requested labels: ubuntu-latest
-2026-10-02T17:20:58.5030000Z Job defined at: machadocalebe/Tp5_PB_ES_ArenaMatch/.github/workflows/ci-cd.yml@refs/heads/main
-2026-10-02T17:20:58.5030000Z Waiting for a runner to pick up this job...
-2026-10-02T17:20:58.5010000Z Evaluating docker-publish.if
-2026-10-02T17:20:58.5010000Z Evaluating: (success() && (((github.ref == 'refs/heads/main') && (github.event_name == 'push'))))
-2026-10-02T17:20:58.5010000Z Expanded: (true && (('refs/heads/main' == 'refs/heads/main') && ('push' == 'push')))
-2026-10-02T17:20:58.5010000Z Result: true
-2026-10-02T17:20:59.0690000Z Job is waiting for a hosted runner to come online.
-2026-10-02T17:20:59.0700000Z Job is about to start running on the hosted runner: GitHub Actions 1000000064

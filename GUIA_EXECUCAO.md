@@ -32,7 +32,7 @@ Aguarde cerca de 1 a 2 minutos para o sistema inteiro ligar. Em seguida, você p
 
 - **1. Acessar a Interface do Sistema (React Frontend):**
   🔗 [http://localhost](http://localhost)
-  > *Aqui você verá as páginas de Gestão de Quadras e Agenda. Sinta-se livre para criar quadras e fazer reservas!*
+  > *Aqui você verá a tela de Login. Como é sua primeira vez, clique em **Registrar**, crie um usuário rapidamente e faça o login para acessar o painel principal com tema Pastel!*
 
 - **2. Acessar a API do Backend (Healthcheck Actuator):**
   🔗 [http://localhost:8080/actuator/health](http://localhost:8080/actuator/health)
